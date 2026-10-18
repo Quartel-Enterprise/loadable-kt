@@ -50,7 +50,7 @@ mavenPublishing {
         name = "Loadable"
         description = "A Kotlin Multiplatform type for values that are either still loading or loaded."
         inceptionYear = "2026"
-        url = "https://github.com/Quartel-Enterprise/loadable"
+        url = "https://github.com/Quartel-Enterprise/loadable-kt"
 
         licenses {
             license {
@@ -69,9 +69,9 @@ mavenPublishing {
         }
 
         scm {
-            connection = "scm:git:github.com/Quartel-Enterprise/loadable.git"
-            developerConnection = "scm:git:ssh://github.com/Quartel-Enterprise/loadable.git"
-            url = "https://github.com/Quartel-Enterprise/loadable/tree/main"
+            connection = "scm:git:github.com/Quartel-Enterprise/loadable-kt.git"
+            developerConnection = "scm:git:ssh://github.com/Quartel-Enterprise/loadable-kt.git"
+            url = "https://github.com/Quartel-Enterprise/loadable-kt/tree/main"
         }
     }
 }
