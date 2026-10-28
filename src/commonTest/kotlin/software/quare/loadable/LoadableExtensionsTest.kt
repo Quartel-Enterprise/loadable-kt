@@ -46,7 +46,12 @@ internal class LoadableExtensionsTest {
     @Test
     fun `GIVEN a Loaded value WHEN reading it as Loaded THEN returns it`() {
         // Given
-        val loaded: Loadable<User> = Loadable.Loaded(User(name = "John", photo = null))
+        val loaded: Loadable<User> = Loadable.Loaded(
+            User(
+                name = "John",
+                photo = null,
+            ),
+        )
 
         // When
         val result = loaded.loadedOrNull()
@@ -70,13 +75,24 @@ internal class LoadableExtensionsTest {
     @Test
     fun `GIVEN a Loaded value WHEN reading its value THEN returns the value`() {
         // Given
-        val loaded: Loadable<User> = Loadable.Loaded(User(name = "John", photo = null))
+        val loaded: Loadable<User> = Loadable.Loaded(
+            User(
+                name = "John",
+                photo = null,
+            ),
+        )
 
         // When
         val result = loaded.valueOrNull()
 
         // Then
-        assertEquals(User(name = "John", photo = null), result)
+        assertEquals(
+            User(
+                name = "John",
+                photo = null,
+            ),
+            result,
+        )
     }
 
     @Test
@@ -120,7 +136,12 @@ internal class LoadableExtensionsTest {
     @Test
     fun `GIVEN a Loaded value WHEN checking the state THEN is loaded and not loading`() {
         // Given
-        val loaded: Loadable<User> = Loadable.Loaded(User(name = "John", photo = null))
+        val loaded: Loadable<User> = Loadable.Loaded(
+            User(
+                name = "John",
+                photo = null,
+            ),
+        )
 
         // When
         val isLoading = loaded.isLoading()
@@ -134,7 +155,12 @@ internal class LoadableExtensionsTest {
     @Test
     fun `GIVEN a Loaded value WHEN mapping it THEN returns the transformed value as Loaded`() {
         // Given
-        val loaded: Loadable<User> = Loadable.Loaded(User(name = "John", photo = null))
+        val loaded: Loadable<User> = Loadable.Loaded(
+            User(
+                name = "John",
+                photo = null,
+            ),
+        )
 
         // When
         val result = loaded.map(User::name)
@@ -146,7 +172,12 @@ internal class LoadableExtensionsTest {
     @Test
     fun `GIVEN a Loaded value WHEN mapping it to null THEN returns Loaded null`() {
         // Given
-        val loaded: Loadable<User> = Loadable.Loaded(User(name = "John", photo = null))
+        val loaded: Loadable<User> = Loadable.Loaded(
+            User(
+                name = "John",
+                photo = null,
+            ),
+        )
 
         // When
         val result = loaded.map(User::photo)
