@@ -120,6 +120,18 @@ internal class LoadableExtensionsTest {
     }
 
     @Test
+    fun `GIVEN loaded null items WHEN reading the loaded values THEN skips them as well as the Loading ones`() {
+        // Given
+        val items = listOf(Loadable.Loaded("John"), Loadable.Loaded(null), Loadable.Loading, Loadable.Loaded("Jane"))
+
+        // When
+        val result = items.toLoadedValues()
+
+        // Then
+        assertEquals(listOf("John", "Jane"), result)
+    }
+
+    @Test
     fun `GIVEN Loading WHEN checking the state THEN is loading and not loaded`() {
         // Given
         val loading: Loadable<User> = Loadable.Loading
@@ -146,6 +158,78 @@ internal class LoadableExtensionsTest {
         // When
         val isLoading = loaded.isLoading()
         val isLoaded = loaded.isLoaded()
+
+        // Then
+        assertFalse(isLoading)
+        assertTrue(isLoaded)
+    }
+
+    @Test
+    fun `GIVEN a Loaded value WHEN it is loaded THEN smart-casts to Loaded`() {
+        // Given
+        val loadable: Loadable<User> = Loadable.Loaded(
+            User(
+                name = "John",
+                photo = null,
+            ),
+        )
+
+        // When
+        val name = if (loadable.isLoaded()) loadable.value.name else null
+
+        // Then
+        assertEquals("John", name)
+    }
+
+    @Test
+    fun `GIVEN a Loaded value WHEN it is not loading THEN smart-casts to Loaded`() {
+        // Given
+        val loadable: Loadable<User> = Loadable.Loaded(
+            User(
+                name = "John",
+                photo = null,
+            ),
+        )
+
+        // When
+        val name = if (loadable.isLoading()) null else loadable.value.name
+
+        // Then
+        assertEquals("John", name)
+    }
+
+    @Test
+    fun `GIVEN Loading WHEN it is loading THEN smart-casts to Loading`() {
+        // Given
+        val loadable: Loadable<User> = Loadable.Loading
+
+        // When
+        val result: Loadable.Loading? = if (loadable.isLoading()) loadable else null
+
+        // Then
+        assertEquals(Loadable.Loading, result)
+    }
+
+    @Test
+    fun `GIVEN Loading WHEN it is not loaded THEN smart-casts to Loading`() {
+        // Given
+        val loadable: Loadable<User> = Loadable.Loading
+
+        // When
+        val result: Loadable.Loading? = if (loadable.isLoaded()) null else loadable
+
+        // Then
+        assertEquals(Loadable.Loading, result)
+    }
+
+    @Test
+    fun `GIVEN a star-projected Loadable WHEN checking the state THEN is loaded and not loading`() {
+        // Given
+        val loadable: Loadable<*> = Loadable.Loaded("John")
+
+        // When
+        val isLoading = loadable.isLoading()
+        val isLoaded = loadable.isLoaded()
 
         // Then
         assertFalse(isLoading)

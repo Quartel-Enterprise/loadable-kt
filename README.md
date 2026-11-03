@@ -126,8 +126,9 @@ items.toLoadedValues()   // the non-null values of the loaded items of a List<Lo
 `valueOrNull()` can't tell a loaded `null` from loading. When the value is nullable, use `loadedOrNull()` or `when`.
 For the same reason, `toLoadedValues()` drops loaded `null` items as well as the loading ones.
 
-`isLoaded()` doesn't smart-cast, so `if (loadable.isLoaded()) loadable.value` doesn't compile. Use `when`, or
-`loadable.loadedOrNull()?.let { ... }`.
+`isLoaded()` and `isLoading()` smart-cast, so `if (loadable.isLoaded()) loadable.value` compiles, and so does
+`if (!loadable.isLoading()) loadable.value`. When both states lead somewhere, prefer `when`: the compiler checks that
+each one is handled.
 
 ### Transforming
 
