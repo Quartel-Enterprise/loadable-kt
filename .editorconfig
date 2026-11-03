@@ -29,6 +29,10 @@ ktlint_quare_test-name-given-when-then = enabled
 ktlint_quare_test-body-sections = enabled
 ktlint_quare_max-file-length = disabled
 
+# Why: the public API lives in commonMain and is documented with KDoc, which this rule rejects
+[src/commonMain/**]
+ktlint_quare_comments-say-why = disabled
+
 [*.kts]
 ktlint_quare_comments-say-why = disabled
 
