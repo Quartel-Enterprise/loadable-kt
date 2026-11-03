@@ -46,7 +46,7 @@ Available on Maven Central.
 
 ```kotlin
 dependencies {
-    implementation("software.quare:loadable:1.0.0")
+    implementation("software.quare:loadable:1.1.0")
 }
 ```
 
@@ -54,7 +54,7 @@ Or with a version catalog:
 
 ```toml
 [versions]
-quare-loadable = "1.0.0"
+quare-loadable = "1.1.0"
 
 [libraries]
 quare-loadable = { module = "software.quare:loadable", version.ref = "quare-loadable" }
