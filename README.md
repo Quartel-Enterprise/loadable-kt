@@ -46,7 +46,7 @@ Available on Maven Central.
 
 ```kotlin
 dependencies {
-    implementation("software.quare:loadable:1.1.0")
+    implementation("software.quare:loadable:1.2.0")
 }
 ```
 
@@ -54,7 +54,7 @@ Or with a version catalog:
 
 ```toml
 [versions]
-quare-loadable = "1.1.0"
+quare-loadable = "1.2.0"
 
 [libraries]
 quare-loadable = { module = "software.quare:loadable", version.ref = "quare-loadable" }
@@ -74,11 +74,11 @@ In a multiplatform project, add it to `commonMain`.
 | --- | --- |
 | JVM and Android | `jvm` (Java 11 bytecode; Android uses the JVM artifact) |
 | JavaScript | `js`, `wasmJs` |
-| Apple | `iosArm64`, `iosSimulatorArm64`, `macosArm64` |
+| Apple | `iosArm64`, `iosSimulatorArm64`, `macosArm64`, `watchosArm64` (arm64_32), `watchosSimulatorArm64` |
 | Linux | `linuxX64`, `linuxArm64` |
 | Windows | `mingwX64` |
 
-There are no Intel Apple targets (`iosX64`, `macosX64`), tvOS or watchOS targets. Built with Kotlin 2.4.21.
+There are no Intel Apple targets (`iosX64`, `macosX64`, `watchosX64`), no `watchosDeviceArm64` and no tvOS targets. Built with Kotlin 2.4.21.
 
 ## Usage
 
